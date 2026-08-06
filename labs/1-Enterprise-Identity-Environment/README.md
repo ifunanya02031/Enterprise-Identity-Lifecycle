@@ -6,7 +6,7 @@ To properly simulate a directory integration/multiple profile sources (that’ll
 
 <br />
 
-<img src="https://i.imgur.com/IMAGE1.png" alt="Install Active Directory">
+<img src="https://imgur.com/OBK96Sx" alt="Install Active Directory"> 
 
 <br /><br />
 
