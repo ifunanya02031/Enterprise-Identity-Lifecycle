@@ -3,52 +3,30 @@
 <h2>Lab 1 - Enterprise Identity Environment</h2>
 
 To properly simulate a directory integration/multiple profile sources (that’ll exist in an enterprise environment), we begin with a Windows Server, to install Active Directory.
-
 <br />
-
 <img src="https://imgur.com/OBK96Sx.png" alt="Install Active Directory"> 
-
 <br /><br />
 Within the (empty) server, add ‘Active Directory Domain Services’ as one of its feature.
 <br />
 <img src="https://imgur.com/ycYKpfL.png" alt="AD DS Feature">
-
 <br /><br />
-
 Then, promote the server (i.e. make responsible for managing Active Directory) to a Domain Controller.
-
 <br />
-
 <img src="https://i.imgur.com/IMAGE3.png" alt="Domain Controller">
-
 <br /><br />
-
 Users are one of the many objects within Active Directory. ‘User 2’ is now part of the forest/domain ‘dev-ad.com’.
-
 <br />
-
 <img src="https://i.imgur.com/IMAGE4.png" alt="Active Directory Users">
-
 <br /><br />
-
 In order for users within a directory to synchronize to Okta (i.e. IAM Platform) there must be a connector. The connector is then installed on the Windows Server, with Active Directory. The ‘Okta AD Agent’ makes outbound calls to the internet (i.e. Okta) and pushes/imports directory changes (i.e. new users, groups, etc.).
-
 <br />
-
 <img src="https://i.imgur.com/IMAGE5.png" alt="Okta AD Agent">
-
 <br /><br />
-
 After successful integration, Active Directory now becomes an official profile source.
-
 <br />
-
 <img src="https://i.imgur.com/IMAGE6.png" alt="Profile Source">
-
 <br /><br />
-
 One of the configurations to note is ‘Profile & Lifecycle Sourcing’, if checked, AD owns the user. A user is a collection of attributes. Meaning, those attributes (for AD originated users) can not be edited within Okta.
-
 <br />
 
 <img src="https://i.imgur.com/IMAGE7.png" alt="Profile and Lifecycle Sourcing">
@@ -72,9 +50,7 @@ Again, a user is a collection of attributes. Certain attributes already exist wi
 <br /><br />
 
 Because AD owns this user (i.e. an AD user), inheriting its value from AD, the attribute cannot be edited from Okta.
-
 Attribute level mastering (ALM) is the act of specifying the profile source that owns the singular attribute. Here, the source priority becomes Okta.
-
 Since the source priority changed, its now editable from Okta. However, on AD its still ‘editable’ but because Okta is now the owner of this attribute, it’ll ignore whatever the value is on AD, and only respects the value from Okta.
 
 <br />
