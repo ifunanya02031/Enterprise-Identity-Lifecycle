@@ -14,7 +14,7 @@ Within the (empty) server, add ‘Active Directory Domain Services’ as one of 
 
 <br />
 
-<img src="https://i.imgur.com/IMAGE2.png" alt="AD DS Feature">
+<img src="https://imgur.com/ycYKpfL.png" alt="AD DS Feature">
 
 <br /><br />
 
