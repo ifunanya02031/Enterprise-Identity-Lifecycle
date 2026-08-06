@@ -2,187 +2,126 @@
 
 <h2>Lab 1 - Enterprise Identity Environment</h2>
 
-This lab simulates an enterprise identity environment by integrating Active Directory with Okta. The objective is to establish Active Directory as a profile source, configure profile mastering, synchronize identities, and automate group membership using Okta Identity Engine.
+To properly simulate a directory integration/multiple profile sources (that’ll exist in an enterprise environment), we begin with a Windows Server, to install Active Directory.
 
 <br />
 
-<h2>Environment</h2>
-
-<ul>
-  <li>Windows Server 2022</li>
-  <li>Active Directory Domain Services</li>
-  <li>Okta Workforce Identity Cloud</li>
-  <li>Okta AD Agent</li>
-</ul>
-
-<br />
-
-<h2>1. Install Active Directory Domain Services</h2>
-
-To simulate an enterprise directory environment, begin by deploying a Windows Server and installing the <b>Active Directory Domain Services (AD DS)</b> role.
-
-<br />
-
-<img src="https://i.imgur.com/IMAGE1.png" width="900"/>
+<img src="https://i.imgur.com/IMAGE1.png" alt="Install Active Directory">
 
 <br /><br />
 
-<h2>2. Promote the Server to a Domain Controller</h2>
-
-After installing AD DS, promote the server to a <b>Domain Controller</b>. This creates the Active Directory forest and allows the server to manage users, groups, and other directory objects.
+Within the (empty) server, add ‘Active Directory Domain Services’ as one of its feature.
 
 <br />
 
-<img src="https://i.imgur.com/IMAGE2.png" width="900"/>
+<img src="https://i.imgur.com/IMAGE2.png" alt="AD DS Feature">
 
 <br /><br />
 
-<h2>3. Create Directory Users</h2>
-
-Users are one of many objects stored within Active Directory. In this lab, <b>User2</b> belongs to the <b>dev-ad.com</b> forest.
+Then, promote the server (i.e. make responsible for managing Active Directory) to a Domain Controller.
 
 <br />
 
-<img src="https://i.imgur.com/IMAGE3.png" width="900"/>
+<img src="https://i.imgur.com/IMAGE3.png" alt="Domain Controller">
 
 <br /><br />
 
-<h2>4. Install the Okta Active Directory Agent</h2>
-
-To synchronize Active Directory with Okta, install the <b>Okta AD Agent</b> on the Domain Controller.
-
-The agent makes outbound connections to Okta and imports directory changes such as users, groups, and profile updates.
+Users are one of the many objects within Active Directory. ‘User 2’ is now part of the forest/domain ‘dev-ad.com’.
 
 <br />
 
-<img src="https://i.imgur.com/IMAGE4.png" width="900"/>
+<img src="https://i.imgur.com/IMAGE4.png" alt="Active Directory Users">
 
 <br /><br />
 
-<h2>5. Configure Active Directory as a Profile Source</h2>
-
-Once the integration is complete, Active Directory becomes an official <b>Profile Source</b>.
-
-Enabling <b>Profile & Lifecycle Sourcing</b> establishes Active Directory as the authoritative owner of imported users.
+In order for users within a directory to synchronize to Okta (i.e. IAM Platform) there must be a connector. The connector is then installed on the Windows Server, with Active Directory. The ‘Okta AD Agent’ makes outbound calls to the internet (i.e. Okta) and pushes/imports directory changes (i.e. new users, groups, etc.).
 
 <br />
 
-<img src="https://i.imgur.com/IMAGE5.png" width="900"/>
+<img src="https://i.imgur.com/IMAGE5.png" alt="Okta AD Agent">
 
 <br /><br />
 
-<h2>6. Universal Directory</h2>
-
-Every synchronized directory user becomes an Okta user inside Universal Directory.
-
-Universal Directory centralizes identities from multiple profile sources into a single identity profile.
+After successful integration, Active Directory now becomes an official profile source.
 
 <br />
 
-<img src="https://i.imgur.com/IMAGE6.png" width="900"/>
+<img src="https://i.imgur.com/IMAGE6.png" alt="Profile Source">
 
 <br /><br />
 
-<h2>7. Attribute Mapping</h2>
-
-A user is a collection of attributes.
-
-Attribute Mapping transfers values from one profile source to another. Only synchronize attributes that are required by downstream applications.
+One of the configurations to note is ‘Profile & Lifecycle Sourcing’, if checked, AD owns the user. A user is a collection of attributes. Meaning, those attributes (for AD originated users) can not be edited within Okta.
 
 <br />
 
-<img src="https://i.imgur.com/IMAGE7.png" width="900"/>
+<img src="https://i.imgur.com/IMAGE7.png" alt="Profile and Lifecycle Sourcing">
 
 <br /><br />
 
-<h2>8. Attribute-Level Mastering</h2>
-
-Because this user originated from Active Directory, imported attributes are read-only inside Okta.
-
-Attribute-Level Mastering (ALM) allows ownership of individual attributes to move from one profile source to another.
-
-Once ownership changes to Okta, the attribute becomes editable within Okta while Active Directory no longer controls that value.
+The Universal Directory is a collection of users. Every integrated user becomes an Okta user.
 
 <br />
 
-<img src="https://i.imgur.com/IMAGE8.png" width="900"/>
+<img src="https://i.imgur.com/IMAGE8.png" alt="Universal Directory">
 
 <br /><br />
 
-<h2>9. Enterprise Groups</h2>
-
-Create enterprise groups representing organizational roles.
-
-Examples:
-
-<ul>
-<li>IAM Engineering</li>
-<li>IT Help Desk</li>
-<li>Human Resources</li>
-</ul>
+Again, a user is a collection of attributes. Certain attributes already exist within a directory, for example, ‘badPwdCount’. To pull data from a source attribute (i.e. originated attribute) to a destination attribute (i.e. another profile source like Okta) is called Attribute Mapping. Only ‘map’ relevant data/attributes (that’ll contribute to downstream applications).
 
 <br />
 
-<img src="https://i.imgur.com/IMAGE9.png" width="900"/>
+<img src="https://i.imgur.com/IMAGE9.png" alt="Attribute Mapping">
 
 <br /><br />
 
-<h2>10. Custom Attributes</h2>
+Because AD owns this user (i.e. an AD user), inheriting its value from AD, the attribute cannot be edited from Okta.
 
-Create a custom attribute named <b>Certs</b> using a <b>String Array</b> with enumerated values.
+Attribute level mastering (ALM) is the act of specifying the profile source that owns the singular attribute. Here, the source priority becomes Okta.
 
-Using an array allows Identity Engine expressions to evaluate multiple certifications efficiently.
+Since the source priority changed, its now editable from Okta. However, on AD its still ‘editable’ but because Okta is now the owner of this attribute, it’ll ignore whatever the value is on AD, and only respects the value from Okta.
 
 <br />
 
-<img src="https://i.imgur.com/IMAGE10.png" width="900"/>
+<img src="https://i.imgur.com/IMAGE10.png" alt="Attribute Level Mastering">
 
 <br /><br />
 
-<h2>11. Automated Group Rules</h2>
-
-Okta Identity Engine evaluates user attributes continuously.
-
-This rule automatically assigns users possessing both:
-
-<ul>
-<li>Okta Certified Professional</li>
-<li>Okta Certified Administrator</li>
-</ul>
-
-to the <b>IAM Engineering</b> group.
+Now, there are 5 groups within this enterprise. The custom groups are: IAM Engineering, IT Help Desk and HR.
 
 <br />
 
-<img src="https://i.imgur.com/IMAGE11.png" width="900"/>
+<img src="https://i.imgur.com/IMAGE11.png" alt="Groups">
 
 <br /><br />
 
-Another rule automatically assigns interns or users reporting to <b>Monica</b> to the <b>IT Help Desk</b> group.
+‘Certs’ is a custom attribute, created in Profile Editor. This attribute is a string array with enumerated values (which is preferred since it evaluates nicer than a regular string).
+
+User 5 has both Okta Certified Professional and Okta Certified Admin cert.
 
 <br />
 
-<img src="https://i.imgur.com/IMAGE12.png" width="900"/>
+<img src="https://i.imgur.com/IMAGE12.png" alt="Custom Attribute">
 
 <br /><br />
 
-<h2>12. Validation</h2>
-
-After Identity Engine evaluates each rule, users are automatically placed into the appropriate enterprise groups.
+Now, a group rule is an automated means for group membership. Okta’s Identity Engine is responsible for evaluating the environment surrounding its users. Because it’s a string array, Okta’s EL is written as ‘Arrays.contains(user._, _)’. This group rule automatically adds users with both certs to the ‘IAM Engineering’ group.
 
 <br />
 
-<img src="https://i.imgur.com/IMAGE13.png" width="900"/>
+<img src="https://i.imgur.com/IMAGE13.png" alt="IAM Engineering Group Rule">
 
 <br /><br />
 
-<h2>Key Takeaways</h2>
+This is the group rule for ‘IT Help Desk’. It states that users with either ‘Monica’ as their manager or are interns, will be automatically added.
 
-<ul>
-<li>Identity begins with authoritative profile sources.</li>
-<li>Universal Directory centralizes enterprise identities.</li>
-<li>Profile Mastering determines attribute ownership.</li>
-<li>Attribute Mapping synchronizes identity data between systems.</li>
-<li>Identity Engine evaluates users continuously.</li>
-<li>Group Rules automate Role-Based Access Control (RBAC).</li>
-</ul>
+<br />
+
+<img src="https://i.imgur.com/IMAGE14.png" alt="Help Desk Group Rule">
+
+<br /><br />
+
+The results of the Identity Engine evaluating the environment (i.e. group rules).
+
+<br />
+
+<img src="https://i.imgur.com/IMAGE15.png" alt="Group Rule Results">
