@@ -50,12 +50,26 @@ Again, a user is a collection of attributes. Certain attributes already exist wi
 <br /><br />
 
 Because AD owns this user (i.e. an AD user), inheriting its value from AD, the attribute cannot be edited from Okta.
+
+<br />
+
+<img src="https://imgur.com/87uWH84.png" alt="Attribute Mapping">
+
+<br /><br />
+
 Attribute level mastering (ALM) is the act of specifying the profile source that owns the singular attribute. Here, the source priority becomes Okta.
-Since the source priority changed, its now editable from Okta. However, on AD its still ‘editable’ but because Okta is now the owner of this attribute, it’ll ignore whatever the value is on AD, and only respects the value from Okta.
 
 <br />
 
 <img src="https://imgur.com/jfzd7jZ.png" alt="Attribute Level Mastering">
+
+<br /><br />
+
+Since the source priority changed, its now editable from Okta. However, on AD its still ‘editable’ but because Okta is now the owner of this attribute, it’ll ignore whatever the value is on AD, and only respects the value from Okta.
+
+<br />
+
+<img src="https://imgur.com/r2aCut2.png" alt="Attribute Level Mastering">
 
 <br /><br />
 
