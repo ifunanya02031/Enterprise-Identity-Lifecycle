@@ -12,26 +12,31 @@ Within the (empty) server, add ‘Active Directory Domain Services’ as one of 
 
 <br />
 <img src="https://imgur.com/ycYKpfL.png" alt="AD DS Feature">
+
 <br /><br />
 Then, promote the server (i.e. make responsible for managing Active Directory) to a Domain Controller.
 
 <br />
 <img src="https://imgur.com/2lWNjcQ.png" alt="Domain Controller">
+
 <br /><br />
 Users are one of the many objects within Active Directory. ‘User 2’ is now part of the forest/domain ‘dev-ad.com’.
 
 <br />
 <img src="https://imgur.com/9j3ejSf.png" alt="Active Directory Users">
+
 <br /><br />
 In order for users within a directory to synchronize to Okta (i.e. IAM Platform) there must be a connector. The connector is then installed on the Windows Server, with Active Directory. The ‘Okta AD Agent’ makes outbound calls to the internet (i.e. Okta) and pushes/imports directory changes (i.e. new users, groups, etc.).
 
 <br />
 <img src="https://imgur.com/8XuRTYp.png" alt="Okta AD Agent">
+
 <br /><br />
 After successful integration, Active Directory now becomes an official profile source.
 
 <br />
 <img src="https://imgur.com/fwhdoaV.png" alt="Profile Source">
+
 <br /><br />
 One of the configurations to note is ‘Profile & Lifecycle Sourcing’, if checked, AD owns the user. A user is a collection of attributes. Meaning, those attributes (for AD originated users) can not be edited within Okta.
 
