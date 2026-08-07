@@ -1,4 +1,7 @@
 # Enterprise Identity Lifecycle
+### Building the Foundation of Enterprise Identity
+
+This implementation establishes the foundation of an enterprise identity environment. Beginning with Active Directory, we'll establish a directory integration with Okta, configure identity sourcing, synchronize user attributes, and automate access through group-based assignments before moving into authentication, federation, and lifecycle management.
 
 To properly simulate a directory integration/multiple profile sources (that’ll exist in an enterprise environment), we begin with a Windows Server, to install Active Directory.
 
