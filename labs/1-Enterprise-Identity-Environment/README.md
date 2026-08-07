@@ -6,6 +6,7 @@ To properly simulate a directory integration/multiple profile sources (that’ll
 
 <br />
 <img src="https://imgur.com/OBK96Sx.png" alt="Install Active Directory"> 
+
 <br /><br />
 Within the (empty) server, add ‘Active Directory Domain Services’ as one of its feature.
 
