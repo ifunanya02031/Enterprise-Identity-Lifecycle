@@ -73,7 +73,7 @@ User 5 has both Okta Certified Professional and Okta Certified Admin cert.
 
 <br />
 
-<img src="https://i.imgur.com/IMAGE12.png" alt="Custom Attribute">
+<img src="https://imgur.com/0DKkcWt.png" alt="Custom Attribute">
 
 <br /><br />
 
@@ -81,7 +81,7 @@ Now, a group rule is an automated means for group membership. Okta’s Identity 
 
 <br />
 
-<img src="https://i.imgur.com/IMAGE13.png" alt="IAM Engineering Group Rule">
+<img src="https://imgur.com/BZDpJcN.png" alt="IAM Engineering Group Rule">
 
 <br /><br />
 
@@ -89,7 +89,13 @@ This is the group rule for ‘IT Help Desk’. It states that users with either 
 
 <br />
 
-<img src="https://i.imgur.com/IMAGE14.png" alt="Help Desk Group Rule">
+<img src="https://imgur.com/fKn5fLx.png" alt="Help Desk Group Rule">
+
+<br /><br />
+
+This is the group rule for ‘IT Help Desk. It states that users with either ‘Monica’ as their manager or are interns, will be automatically added. 
+
+<img src="https://imgur.com/fKn5fLx.png" alt="Group Rules Evaluated">
 
 <br /><br />
 
@@ -97,4 +103,4 @@ The results of the Identity Engine evaluating the environment (i.e. group rules)
 
 <br />
 
-<img src="https://i.imgur.com/IMAGE15.png" alt="Group Rule Results">
+<img src="https://imgur.com/Pui6tBi.png" alt="Group Rule Results">
