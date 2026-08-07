@@ -93,12 +93,6 @@ This is the group rule for ‘IT Help Desk’. It states that users with either 
 
 <br /><br />
 
-This is the group rule for ‘IT Help Desk. It states that users with either ‘Monica’ as their manager or are interns, will be automatically added. 
-
-<img src="https://imgur.com/fKn5fLx.png" alt="Group Rules Evaluated">
-
-<br /><br />
-
 The results of the Identity Engine evaluating the environment (i.e. group rules).
 
 <br />
