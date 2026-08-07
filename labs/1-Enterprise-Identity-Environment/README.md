@@ -26,9 +26,11 @@ Users are one of the many objects within Active Directory. ‘User 2’ is now p
 <img src="https://imgur.com/9j3ejSf.png" alt="Active Directory Users">
 
 <br /><br />
+
 In order for users within a directory to synchronize to Okta (i.e. IAM Platform) there must be a connector. The connector is then installed on the Windows Server, with Active Directory. The ‘Okta AD Agent’ makes outbound calls to the internet (i.e. Okta) and pushes/imports directory changes (i.e. new users, groups, etc.).
 
 <br />
+
 <img src="https://imgur.com/8XuRTYp.png" alt="Okta AD Agent">
 
 <br /><br />
