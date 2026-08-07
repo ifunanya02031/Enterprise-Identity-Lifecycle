@@ -29,7 +29,7 @@ After successful integration, Active Directory now becomes an official profile s
 One of the configurations to note is ‘Profile & Lifecycle Sourcing’, if checked, AD owns the user. A user is a collection of attributes. Meaning, those attributes (for AD originated users) can not be edited within Okta.
 <br />
 
-<img src="https://i.imgur.com/IMAGE7.png" alt="Profile and Lifecycle Sourcing">
+<img src="https://imgur.com/VCy9ymr.png" alt="Profile and Lifecycle Sourcing">
 
 <br /><br />
 
@@ -37,7 +37,7 @@ The Universal Directory is a collection of users. Every integrated user becomes 
 
 <br />
 
-<img src="https://i.imgur.com/IMAGE8.png" alt="Universal Directory">
+<img src="https://imgur.com/l0knEXO.png" alt="Universal Directory">
 
 <br /><br />
 
@@ -45,7 +45,7 @@ Again, a user is a collection of attributes. Certain attributes already exist wi
 
 <br />
 
-<img src="https://i.imgur.com/IMAGE9.png" alt="Attribute Mapping">
+<img src="https://imgur.com/Im8Ve3o.png" alt="Attribute Mapping">
 
 <br /><br />
 
@@ -55,7 +55,7 @@ Since the source priority changed, its now editable from Okta. However, on AD it
 
 <br />
 
-<img src="https://i.imgur.com/IMAGE10.png" alt="Attribute Level Mastering">
+<img src="https://imgur.com/jfzd7jZ.png" alt="Attribute Level Mastering">
 
 <br /><br />
 
@@ -63,7 +63,7 @@ Now, there are 5 groups within this enterprise. The custom groups are: IAM Engin
 
 <br />
 
-<img src="https://i.imgur.com/IMAGE11.png" alt="Groups">
+<img src="https://imgur.com/e34Ae1y.png" alt="Groups">
 
 <br /><br />
 
